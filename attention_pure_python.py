@@ -116,3 +116,36 @@ values_large = [1000.0, 1001.0]
 # Without subtracting max you'd try exp(1001) which overflows.
 print(f'softmax(values_large): {softmax(values_large)}')
 
+
+def pretty_print_matrix(m, name="Matrix"):
+    print(f"{name} (shape {len(m)} x {len(m[0])}):")
+    for row in m:
+        print("  [" + ", ".join(f"{x: .4f}" for x in row) + "]")
+    print()
+
+Q = [
+    [1.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 1.0]
+]
+
+K = [
+    [1.0, 0.5],
+    [0.5, 1.0],
+    [1.0, -1.0]
+]
+
+dk = len(Q[0])
+
+
+KT = transpose_short(K)
+pretty_print_matrix(Q, "Q")
+pretty_print_matrix(K, "K")
+pretty_print_matrix(KT, "K^T")
+
+scores = matmul(Q, KT)
+scale = math.sqrt(dk)
+scores_scaled = [[elem / scale for elem in row] for row in scores]
+
+pretty_print_matrix(scores, "Raw scores = Q K^T (pre-scale)")
+pretty_print_matrix(scores_scaled, f"Scaled scores = Q K^T / sqrt({dk})")
