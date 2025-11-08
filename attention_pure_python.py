@@ -4,6 +4,9 @@
 # Demonstrates unmasked, causal masked, and padding masked attention, and visualizes
 # attention weights as heatmaps using matplotlib.
 
+import math
+from typing import List
+
 
 def transpose_short (matrix):
     return [list(row) for row in zip(*matrix)]
@@ -75,5 +78,41 @@ def matmul(A, B):
 A = [[1,2,3],[4,5,6]]
 B = [[7,8],[9,10],[11,12]]
 print(f'matmul(A, B):{matmul(A,B)}')
-# Expect [[58.0, 64.0], [139.0, 154.0]]
+
+
+def softmax_short(vector):
+    exps = [math.exp(x) for x in vector]
+    s = sum(exps)
+    return [e / s for e in exps]
+
+
+def softmax(vec: List[float]) -> List[float]:
+    if not vec:
+        raise ValueError("softmax: input vector must be non-empty")
+
+    # subtract max for numerical stability
+    m = max(vec)
+    exps = [math.exp(x - m) for x in vec]
+
+    # normalize
+    s = sum(exps)
+    if s == 0.0:
+        # extremely unlikely after subtracting max unless underflowed;
+        # fall back to a uniform distribution to avoid division by zero.
+        n = len(vec)
+        return [1.0 / n] * n
+
+    return [e / s for e in exps]
+
+
+values_normal = [1.0, 2.0, 3.0]
+print(f'softmax(values_normal): {softmax(values_normal)}')
+
+# print(f'softmax_short(values_normal): {softmax_short(values_normal)}')
+
+
+
+values_large = [1000.0, 1001.0]
+# Without subtracting max you'd try exp(1001) which overflows.
+print(f'softmax(values_large): {softmax(values_large)}')
 
