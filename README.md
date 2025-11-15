@@ -31,7 +31,7 @@ cd Scaled-Dot-Product-Attention
 ```
 Create a virtual environment (recommended):
 ```
-python3 -m venv venv
+python3 -m venv env
 ```
 ```
 source env/bin/activate
