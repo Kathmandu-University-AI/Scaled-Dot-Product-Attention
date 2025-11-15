@@ -8,6 +8,8 @@ import math
 from typing import List
 import matplotlib.pyplot as plt
 
+NEG_INF = -1e9  # sentinel for masked positions
+
 def transpose_short (matrix):
     return [list(row) for row in zip(*matrix)]
 
@@ -232,19 +234,10 @@ pretty_print_matrix(attn_padding)
 print("\nOutput (padding masked):")
 pretty_print_matrix(out_padding)
 
-# ---------- Visualize attention weights as heatmaps ----------
-fig, axes = plt.subplots(1, 3, figsize=(12,4))
-axes[0].set_title("Unmasked")
-axes[0].imshow(attn_unmasked)
-axes[0].set_xlabel("Key positions (j)")
-axes[0].set_ylabel("Query positions (i)")
-axes[1].set_title("Causal Masked")
-axes[1].imshow(attn_causal)
-axes[1].set_xlabel("Key positions (j)")
-axes[1].set_ylabel("Query positions (i)")
-axes[2].set_title("Padding Masked (pos 1)")
-axes[2].imshow(attn_padding)
-axes[2].set_xlabel("Key positions (j)")
-axes[2].set_ylabel("Query positions (i)")
+# visualize attention weights as heatmaps: Unmasked | Causal | Padding
+fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+axes[0].set_title("Unmasked"); axes[0].imshow(attn_unmasked); axes[0].set_xlabel("Key positions (j)"); axes[0].set_ylabel("Query positions (i)")
+axes[1].set_title("Causal Masked"); axes[1].imshow(attn_causal); axes[1].set_xlabel("Key positions (j)"); axes[1].set_ylabel("Query positions (i)")
+axes[2].set_title("Padding Masked (pos 1)"); axes[2].imshow(attn_padding); axes[2].set_xlabel("Key positions (j)"); axes[2].set_ylabel("Query positions (i)")
 plt.tight_layout()
 plt.show()
