@@ -9,6 +9,7 @@ This repository demonstrates **Scaled Dot-Product Attention** implemented entire
 - Multiplies by `V` to get the attention output.
 - Includes **causal mask** (for autoregressive decoding) and **padding mask** (for ignoring padded tokens).
 - Visualizes attention weights using Matplotlib.
+- Use very small matrices (seq_len=3, d_k=2).
 
 ## Mathematical Recap
 
@@ -47,12 +48,13 @@ The script produces three heatmaps:
 
 These help visualize how masking changes attention distributions.
 
-## Educational Use
-
-This example is designed for clarity, not speed. It’s ideal for:
-- Classroom demonstrations
-- Step-by-step debugging
-- Comparing with NumPy or PyTorch implementations
+# This code will:
+# - define transpose, matmul, softmax (pure Python lists)
+# - compute attention scores = Q K^T / sqrt(d_k)
+# - apply softmax to get weights
+# - multiply weights by V to get outputs
+# - apply two masks: causal mask and padding mask, and show how results change
+# - visualize attention weights as heatmaps using matplotlib
 
 ## License
 
