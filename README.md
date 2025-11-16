@@ -35,6 +35,9 @@ macOS, Linux
 ```
 python3 -m venv env
 ```
+```
+source env/bin/activate
+```
 Windows
 ```
 .\env\Scripts\activate
