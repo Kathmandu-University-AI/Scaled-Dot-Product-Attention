@@ -34,7 +34,7 @@ Create a virtual environment (recommended):
 python3 -m venv env
 ```
 ```
-source env/bin/activate
+for windows .\env\Scripts\activate and for linux source env/bin/activate
 ```
 Install dependencies:
 ```
@@ -43,6 +43,7 @@ pip install -r requirements.txt
 Run the script:
 ```
 python dot-product-attention.py
+python dot-product-attention-sentence.py
 ```
 
 
