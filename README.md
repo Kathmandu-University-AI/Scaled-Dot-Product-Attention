@@ -30,22 +30,28 @@ git clone https://github.com/sparshrestha/Scaled-Dot-Product-Attention.git
 cd Scaled-Dot-Product-Attention
 ```
 Create a virtual environment (recommended):
+
+macOS, Linux
 ```
 python3 -m venv env
 ```
+Windows
 ```
-for windows .\env\Scripts\activate and for linux source env/bin/activate
+.\env\Scripts\activate and for linux source env/bin/activate
 ```
+
 Install dependencies:
 ```
 pip install -r requirements.txt
 ```
+
 Run the script:
 ```
 python dot-product-attention.py
+```
+```
 python dot-product-attention-sentence.py
 ```
-
 
 
 ## Example Setup
