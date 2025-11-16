@@ -37,7 +37,7 @@ python3 -m venv env
 ```
 Windows
 ```
-.\env\Scripts\activate and for linux source env/bin/activate
+.\env\Scripts\activate
 ```
 
 Install dependencies:
