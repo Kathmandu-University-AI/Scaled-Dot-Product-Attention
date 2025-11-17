@@ -73,6 +73,7 @@ V = [[1., 0.],
      [0., 1.],
      [1., 1.]]
 ```
+![Attention Heatmaps](https://raw.githubusercontent.com/KU-DoAI/Scaled-Dot-Product-Attention/main/attention_heatmaps.png)
 
 Sequence length = 3, key dimension = 2.
 
